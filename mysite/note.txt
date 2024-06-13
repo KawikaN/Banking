@@ -1,0 +1,24 @@
+cd
+wire
+online deposits
+checks
+    online checking
+credit
+    payment history
+    amount oweed
+    new credit
+    length of credit history
+    credit mix
+atm
+automaic billing
+direct deposits
+buisness
+loans
+
+
+
+
+
+
+
+Tranform the parameters for the objects into linked list

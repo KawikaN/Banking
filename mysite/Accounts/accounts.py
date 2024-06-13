@@ -12,10 +12,11 @@ class Account: #superclass
     id = 0
     wait = 0
     availableFunds = 0
-    def __init__(self, accountLevel, password, email, phoneNumber, address):
+    def __init__(self, accountLevel, name, password, email, phoneNumber, address):
         self.id = id
         self.dateCreated = date.today()
         self.accountLevel = accountLevel
+        self.name = name
         self.password = password
         self.email = email
         self.phoneNumber = phoneNumber
@@ -49,6 +50,9 @@ class Account: #superclass
     def getValue(self):
         return(f"${self.value}")
     
+    def getName(self):
+        return(f"{self.name}")
+    
     def setValue(self, amount):
         if(self.value > amount):
             Account.availableFunds = Account.availableFunds - amount
@@ -63,7 +67,7 @@ class Account: #superclass
         return Account.availableFunds
 
     def Data(self):
-        return(self.accountLevel + "\n"+ self.password+ "\n"+ self.email+ "\n"+ self.phoneNumber+ "\n"+ self.address)
+        return(self.accountLevel + "\n"+ self.name+ "\n"+ self.password+ "\n"+ self.email+ "\n"+ self.phoneNumber+ "\n"+ self.address)
 
     @classmethod # this will call the type class instead of every individual instance
     def out(cls): # cls is the class being saved
@@ -71,19 +75,19 @@ class Account: #superclass
 
 
 class Checkings(Account):
-    def __init__(self, accountLevel, password, email, phoneNumber, address):
-        super().__init__(accountLevel, password, email, phoneNumber, address)
+    def __init__(self, accountLevel, name, password, email, phoneNumber, address):
+        super().__init__(accountLevel, name, password, email, phoneNumber, address)
     def withdraw(self, amount):
         self.wait = 0
-        super().withdraw(amount)
+        return super().withdraw(amount)
 
 # cannot spend money in savings must be put into checkings
 class Savings(Account):
     wait = 0
-    def __init__(self, accountLevel, password, email, phoneNumber, address):
-        super().__init__(accountLevel, password, email, phoneNumber, address)
+    def __init__(self, accountLevel, name, password, email, phoneNumber, address):
+        super().__init__(accountLevel, name, password, email, phoneNumber, address)
     def withdraw(self, amount):
-        super().withdraw(amount)
+        return super().withdraw(amount)
     
 class Card():
     def __init__(self, password):
